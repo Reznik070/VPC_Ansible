@@ -110,9 +110,9 @@
         - "{{pubsub1_out.subnet.id}}"
         - "{{pubsub2_out.subnet.id}}"
         - "{{pubsub3_out.subnet.id}}"
-      routes:
-        - dest: 0.0.0.0/0
-          gateway_id: "{{igw_out.gateway_id}}"
+        routes:
+          - dest: 0.0.0.0/0
+            gateway_id: "{{igw_out.gateway_id}}"
       register: pub_route_out
 
 
