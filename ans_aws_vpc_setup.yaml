@@ -100,4 +100,20 @@
           Name: test_gateway
       register: igw_out
 
+    - name: Create Route tables
+      ec2_vpc_route_table:
+        vpc_id: "{{vpcout.vpc.id}}"
+        region: "{{region}}"
+        tags:
+          Name: test_public_route_tbl
+        subnets:
+        - "{{test_pubsub1.subnet.id}}"
+        - "{{test_pubsub2.subnet.id}}"
+        - "{{test_pubsub3.subnet.id}}"
+      routes:
+        - dest: 0.0.0.0/0
+          gateway_id: "{{igw_out.gateway_id}}"
+      register: pub_route_out
+
+
 
